@@ -105,6 +105,108 @@ local Toggle = Tab:CreateToggle({
            EquipBest:InvokeServer()
        end
    end,
+local Tab = Window:CreateTab("Rebirth", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Rebirth")
+local ToggleEnabled = false
+local spamAmount = 50
+local delayTime = 0.5
+
+local RemoteFunction = game:GetService("ReplicatedStorage")
+    :WaitForChild("rbxts_include")
+    :WaitForChild("node_modules")
+    :WaitForChild("@rbxts")
+    :WaitForChild("remo")
+    :WaitForChild("src")
+    :WaitForChild("container")
+    :WaitForChild("rebirth")
+
+local Toggle = Tab:CreateToggle({
+   Name = "Rebirth Spammer",
+   CurrentValue = false,
+   Flag = "ToggleRebirth",
+   Callback = function(Value)
+       ToggleEnabled = Value
+       if ToggleEnabled then
+           spawn(function()
+               for i = 1, spamAmount do
+                   if not ToggleEnabled then break end
+                   local result = RemoteFunction:InvokeServer()  -- Add args if needed
+                   print(result)
+                   task.wait(delayTime)
+               end
+           end)
+       end
+   end,
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
 
 local Tab = Window:CreateTab("Eggs", 4483362458) -- Title, Image
