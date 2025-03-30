@@ -114,22 +114,30 @@ local args = {
     [2] = 1
 }
 
+local toggled = false
+
 local Toggle = Tab:CreateToggle({
-    Name = "Dragon Egg Opener",
+    Name = "Auto Open Dragon Egg",
     CurrentValue = false,
-    Flag = "Toggle1",
+    Flag = "DragoEgg",
     Callback = function(Value)
-        if Value then
-            -- When the toggle is turned ON, the script will run
-            game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include")
-            :WaitForChild("node_modules")
-            :WaitForChild("@rbxts")
-            :WaitForChild("remo")
-            :WaitForChild("src")
-            :WaitForChild("container")
-            :WaitForChild("eggs.open")
-            :InvokeServer(unpack(args))
-        end
+        toggled = Value
+
+        -- Start a new thread for continuous execution
+        spawn(function()
+            while toggled do
+                game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include")
+                :WaitForChild("node_modules")
+                :WaitForChild("@rbxts")
+                :WaitForChild("remo")
+                :WaitForChild("src")
+                :WaitForChild("container")
+                :WaitForChild("eggs.open")
+                :InvokeServer(unpack(args))
+
+                wait(0.5)  -- Adjust the wait time as needed to control the speed
+            end
+        end)
     end,
 })
 
