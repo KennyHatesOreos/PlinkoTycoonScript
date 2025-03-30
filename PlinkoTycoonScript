@@ -32,3 +32,79 @@ local Window = Rayfield:CreateWindow({
       Key = {"Oreo"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
+local Tab = Window:CreateTab("Balls", 4483362458) -- Title, Image
+local Button = Tab:CreateButton({
+   Name = "5Million",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+local args = {
+    [1] = 15
+}
+
+local RemoteEvent = game:GetService("ReplicatedStorage")
+    :WaitForChild("rbxts_include")
+    :WaitForChild("node_modules")
+    :WaitForChild("@rbxts")
+    :WaitForChild("remo")
+    :WaitForChild("src")
+    :WaitForChild("container")
+    :WaitForChild("plinko.onBallCollected")
+
+for i = 1, 50 do
+    RemoteEvent:FireServer(unpack(args))
+end
+   end,
+})
+
+local Divider = Tab:CreateDivider()
+local Button = Tab:CreateButton({
+   Name = "5Million (LAG)",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+local args = {
+    [1] = 1
+}
+
+local RemoteEvent = game:GetService("ReplicatedStorage")
+    :WaitForChild("rbxts_include")
+    :WaitForChild("node_modules")
+    :WaitForChild("@rbxts")
+    :WaitForChild("remo")
+    :WaitForChild("src")
+    :WaitForChild("container")
+    :WaitForChild("plinko.onBallCollected")
+
+for i = 1, 5000000 do
+    RemoteEvent:FireServer(unpack(args))
+end
+   end,
+})
+
+local Tab = Window:CreateTab("Pets", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Pets")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local EquipBest = ReplicatedStorage:WaitForChild("rbxts_include")
+    :WaitForChild("node_modules")
+    :WaitForChild("@rbxts")
+    :WaitForChild("remo")
+    :WaitForChild("src")
+    :WaitForChild("container")
+    :WaitForChild("pets.equipBest")
+
+local ToggleEnabled = false -- Track toggle state
+
+local Toggle = Tab:CreateToggle({
+   Name = "Equip Best",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+       ToggleEnabled = Value -- Update the toggle state
+       
+       if ToggleEnabled then
+           -- Trigger the server call only when the toggle is ON
+           EquipBest:InvokeServer()
+       end
+   end,
+})
+
+local Tab = Window:CreateTab("Eggs", 4483362458) -- Title, Image
