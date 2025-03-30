@@ -88,6 +88,14 @@ for i = 1, 50 do
 end
    end,
 })
+local Button = Tab:CreateButton({
+   Name = "???",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+local ohNumber1 = 10
+
+game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].remo.src.container["plinko.onBallCollected"]:FireServer(ohNumber1)
+})
 
 local Divider = Tab:CreateDivider()
 local Button = Tab:CreateButton({
