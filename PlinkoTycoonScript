@@ -106,6 +106,33 @@ local Toggle = Tab:CreateToggle({
        end
    end,
 
+local Tab = Window:CreateTab("Eggs", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Eggs")
+
+local args = {
+    [1] = "Dragon",
+    [2] = 1
+}
+
+local Toggle = Tab:CreateToggle({
+    Name = "Dragon Egg Opener",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        if Value then
+            -- When the toggle is turned ON, the script will run
+            game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include")
+            :WaitForChild("node_modules")
+            :WaitForChild("@rbxts")
+            :WaitForChild("remo")
+            :WaitForChild("src")
+            :WaitForChild("container")
+            :WaitForChild("eggs.open")
+            :InvokeServer(unpack(args))
+        end
+    end,
+})
+
 
 
 
