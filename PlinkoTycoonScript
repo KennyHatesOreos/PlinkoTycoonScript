@@ -11,7 +11,7 @@ local Window = Rayfield:CreateWindow({
 
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = OreoHub, -- Create a custom folder for your hub/game
+      FolderName = FolderName = "OreoHub", -- Create a custom folder for your hub/game
       FileName = "Plinko Oreo Hub"
    },
 
@@ -87,14 +87,6 @@ for i = 1, 50 do
     RemoteEvent:FireServer(unpack(args))
 end
    end,
-})
-local Button = Tab:CreateButton({
-   Name = "???",
-   Callback = function()
-   -- The function that takes place when the button is pressed
-local ohNumber1 = 10
-
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].remo.src.container["plinko.onBallCollected"]:FireServer(ohNumber1)
 })
 
 local Divider = Tab:CreateDivider()
